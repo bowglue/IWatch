@@ -1,0 +1,52 @@
+<div
+  class="slider-card"
+  [class.active]="isLocalCardActive"
+  [ngStyle]="{ transformOrigin: scaleOrigin }"
+  #card
+>
+  <img
+    class="slider-card-img"
+    [class.active]="!isVideoActive"
+    src="{{ movie.movie_image }}"
+  />
+
+  <div class="slider-card-content" [class.active]="isVideoActive">
+    <video class="video" [muted]="mute$ | async" #videoPlayer></video>
+
+    <div class="slider-card-title">
+      <h6>{{ movie.movie_name }}</h6>
+    </div>
+    <div class="slider-card-icon">
+      <img
+        class="favorites"
+        src="../../../assets/image/1x/outline_favorite_border_white_24dp.png"
+        alt=""
+      />
+      <div
+        class="mute"
+        [ngStyle]="{
+          filter: mute ? 'brightness(50%) ' : 'brightness(100%)'
+        }"
+        (click)="muteHandler()"
+      >
+        <img
+          [hidden]="!mute"
+          src="../../../assets/image/1x/outline_volume_off_white_24dp.png"
+          alt=""
+        />
+        <img
+          [hidden]="mute"
+          src="../../../assets/image/1x/outline_volume_up_white_24dp.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="slider-card-next">
+      <img
+        (click)="handleCardFocus()"
+        src="../../../assets/image/1x/outline_east_white_24dp.png"
+        alt=""
+      />
+    </div>
+  </div>
+</div>

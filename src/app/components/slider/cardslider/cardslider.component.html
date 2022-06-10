@@ -1,0 +1,45 @@
+<div class="slider-row" *ngIf=" renderMovie$ | async as renderMovie">
+  <h2 class="header">Title Slider</h2>
+  <div class="slider">
+    <div class="slider-mask">
+      <div *ngIf="sliderState()" class="slider-button-left-mask">
+        <span
+          class="slider-button-left"
+          role="button"
+          (click)="!isSlidingItems && changePage(-1)"
+        >
+          <img
+            src="../../../assets/image/twotone_chevron_left_white_24dp.png"
+            alt=""
+          />
+        </span>
+      </div>
+      <div
+        class="slider-content"
+        [ngClass]="{ 'slider-animation': isSlidingItems }"
+        [ngStyle]="{ transform: pagePosition}"
+      >
+        <div
+          class="slider-item"
+          [ngStyle]="{width: cardWidth }"
+          *ngFor="let movie of sliderMovieInfo; let i = index"
+        >
+          <app-card
+            [movie] = "movie"
+            [scaleOrigin]="scaleOrigin(i)"
+          ></app-card>
+        </div>
+      </div>
+      <div class="slider-button-right-mask">
+        <span
+          class="slider-button-right"
+          role="button"
+          (click)="!isSlidingItems && changePage(+1)"
+          ><img
+            src="../../../assets/image/twotone_chevron_right_white_24dp.png"
+            alt=""
+        /></span>
+      </div>
+    </div>
+  </div>
+</div>

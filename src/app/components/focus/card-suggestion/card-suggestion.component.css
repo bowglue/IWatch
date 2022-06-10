@@ -1,0 +1,44 @@
+.card-suggestion-container{
+    position:relative;
+    width:100%;
+    overflow: hidden;
+    border-radius: 10px;
+    /* background: red; */
+    
+}
+
+.card-suggestion-title{
+    width: fit-content;
+    margin: auto;
+  }
+  
+  .card-suggestion-item {
+    /* background-color: blue; */
+    box-sizing: border-box;
+    width:100%;
+    white-space: normal;
+    padding: 0.3vw 0;
+    opacity: 0;
+    animation: SuggestionAnimation 1s forwards ease;
+    animation-delay: calc(.9s + .2s * var(--i));
+  }
+
+  .card-suggestion-item> img{
+      width:100%;
+      border-radius: 10px;
+  }
+
+  
+@keyframes SuggestionAnimation {
+    0% {
+      transform: translateY(110%);
+      opacity: 0;
+    }
+    60% {
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }

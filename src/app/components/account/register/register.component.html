@@ -1,0 +1,82 @@
+<div class="card ">
+  <h4  class="card-header">Sign Up</h4>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <mat-form-field
+        class="form-field"
+        appearance="fill"
+      >
+        <mat-label>First Name</mat-label>
+        <input type="text" formControlName="first_name" matInput />
+        <mat-error
+          *ngIf="first_name?.touched && first_name?.invalid"
+          class="form-error"
+        >
+          <mat-error *ngIf="first_name?.hasError('required')">
+            First Name <strong>required</strong>
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="form-field"
+        appearance="fill"
+      >
+        <mat-label>Last Name</mat-label>
+        <input type="text" formControlName="last_name" matInput />
+        <mat-error
+          *ngIf="last_name?.touched && last_name?.invalid"
+          class="form-error"
+        >
+          <mat-error *ngIf="last_name?.hasError('required')">
+            Last Name <strong>required</strong>
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label class="login">Email</mat-label>
+        <input formControlName="email" type="text" matInput />
+        <mat-error
+          *ngIf="email?.touched && this.email?.invalid"
+          class="form-error"
+        >
+          <mat-error *ngIf="email?.hasError('required')">
+            Email <strong>required</strong>!
+          </mat-error>
+          <mat-error *ngIf="email?.hasError('email')">
+            Email format <strong>incorrect</strong>!
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label class="login">Password</mat-label>
+        <input formControlName="password" type="password" matInput />
+        <mat-error
+          *ngIf="password?.touched && password?.invalid"
+          class="form-error"
+        >
+          <mat-error *ngIf="password?.hasError('required')">
+            Password <strong>required</strong>!
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <div class="form-group">
+        <button
+          [disabled]="loading || this.registerForm.invalid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Sign up
+        </button>
+        <a
+          routerLink="/login"
+          class="register-ref"
+          >Cancel</a
+        >
+      </div>
+    </form>
+  </div>
+</div>

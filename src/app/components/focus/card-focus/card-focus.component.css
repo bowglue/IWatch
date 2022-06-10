@@ -1,0 +1,170 @@
+.card-focus-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 24, 0.65);
+  color: white;
+  animation: popup 500ms forwards ease;
+}
+
+.card-focus-content {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  width: 65%;
+  margin: auto;
+  border-radius: 10px;
+  display: block;
+  box-shadow: 10px 10px 10px black;
+}
+
+.card-focus-content > img {
+  width: 100%;
+  animation: backAn 25s forwards ease;
+}
+
+.card-focus-title {
+  position: absolute;
+  overflow: hidden;
+  width: fit-content;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 80px 100px;
+}
+
+.card-focus-title > h1 {
+  transform: translateY(110%);
+  animation: titleAnimation 1s forwards ease;
+  animation-delay: 300ms;
+}
+
+.card-focus-bottom-overlay {
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  margin: 100px 55px;
+  width: 40%;
+}
+
+.card-focus-bottom-overlay > img {
+  width: 100%;
+  opacity: 0;
+  animation: titleAnimation 1s forwards ease;
+  animation-delay: 500ms;
+}
+
+.card-focus-button-container {
+  opacity: 0;
+  animation: buttonAnimation 1s ease forwards;
+  animation-delay: 800ms;
+  padding-top: 2%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-focus-button {
+  background: #e7e7e7;
+  color: black;
+  width: 40%;
+
+  letter-spacing: 0.1em;
+  height: 50px;
+  display: inline-block;
+  margin-right: 15px;
+  margin-left: 15px;
+
+  text-transform: uppercase;
+  border-radius: 2px;
+
+  transition: transform 300ms ease;
+}
+
+.card-focus-button:hover {
+  transform: translateY(-15%);
+}
+
+.card-focus-button > p {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dark {
+  color: rgb(255, 255, 255);
+  background: #000000;
+  border: solid;
+}
+
+.card-focus-right-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.card-focus-suggestion-content {
+  /* background-color: yellow; */
+  white-space: nowrap;
+  width:70%;
+  margin: auto;
+}
+
+
+@keyframes titleAnimation {
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes buttonAnimation {
+  0% {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes backAn {
+  0% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,65 @@
+<div class="nav-image">
+  <nav
+    class="navbar navbar-expand-lg navbar-dark bg-dark"
+    *ngIf="accountService.isLoggedIn | async"
+  >
+    <a class="navbar-brand" routerLink="/home">Title/Logo</a>
+
+    <!-- Left content -->
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-item nav-link" routerLink="/home">Home</a>
+      </li>
+      <mat-divider [vertical]="true"></mat-divider>
+      <li class="nav-item active">
+        <a class="nav-item nav-link" routerLink="/admin">Series</a>
+      </li>
+      <mat-divider [vertical]="true"></mat-divider>
+      <li class="nav-item active">
+        <a class="nav-item nav-link" routerLink="/home">Movies</a>
+      </li>
+    </ul>
+
+    <!-- Right content -->
+    <ul class="navbar-nav ms-auto">
+      <div class="search">
+        <form class="form-inline">
+          <div class="md-form my-0">
+            <input
+              class="form-control mr-sm-2 search-input"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </div>
+        </form>
+        <img click class="search-img" src="assets\image\search.png" alt="" />
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <li class="nav-item active">
+        <a class="nav-item nav-link" routerLink="/home">Other</a>
+      </li>
+      <mat-divider [vertical]="true"></mat-divider>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Icon</a
+        >
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Item 1</a>
+          <a class="dropdown-item" href="#">Item 2</a>
+          <a class="dropdown-item" (click)="accountService.logout()">
+            Logout
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

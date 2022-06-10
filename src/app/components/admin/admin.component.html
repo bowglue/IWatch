@@ -1,0 +1,52 @@
+<img src="{{ imgCompressed }}" alt="" />
+<div class="card">
+  <h4 class="card-header">Movie</h4>
+  <div class="card-body">
+    <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label class="login">Movie name</mat-label>
+        <input formControlName="movie_name" type="text" matInput />
+        <mat-error
+          *ngIf="movie_name?.touched && this.movie_name?.invalid"
+          class="form-error"
+        >
+          <mat-error *ngIf="movie_name?.hasError('required')">
+            Movie name <strong>required</strong>!
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-label>Movie image</mat-label>
+      <input type="file" accept="image/*" (change)="compressFile($event)" />
+      <mat-label>Movie trailer</mat-label>
+      <input type="file" accept="video/*" (change)="createVideoChunk($event)" />
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <div class="card-movie">
+  <app-card [movie]="movie1"></app-card>
+</div>
+<div class="card-movie">
+  <app-card [movie]="movie2"></app-card>
+</div> -->
+<!-- <div>
+  <input
+    type="file"
+    accept="video/*"
+    value="chunk"
+    (change)="createVideoChunk($event)"
+  />
+  <button (click)="streamVideo()">Stream Video</button>
+  <button (click)="getTrailerChunk()">Get Trailer Video</button>
+</div>
+<video
+  id="video"
+  autoplay
+  width="640"
+  height="360"
+  controls
+  #videoPlayer
+></video> -->

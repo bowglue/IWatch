@@ -1,0 +1,12 @@
+<div class="home">
+  <app-cardslider> </app-cardslider>
+  <app-cardslider> </app-cardslider>
+  <app-cardslider> </app-cardslider>
+  <!-- <app-cardslider> </app-cardslider>
+  <app-cardslider> </app-cardslider> -->
+  <app-card-focus *ngIf="cardInfoService.CardFocus$ | async"></app-card-focus>
+</div>
+<ng-template #sliderLoading>
+  <!-- <app-cardslider></app-cardslider> -->
+</ng-template>
+
