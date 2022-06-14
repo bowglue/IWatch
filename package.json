@@ -23,31 +23,28 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@ng-bootstrap/ng-bootstrap": "^12.1.1",
-    "@ngmodule/material-carousel": "^0.6.0",
+    
     "@rxjs/rx": "^4.1.0",
     "angular": "^1.6.10",
-    "angular-responsive-carousel": "^2.1.2",
+   
     "animate.css": "^4.1.1",
     "bootstrap": "^5.1.3",
-    "fzstd": "^0.0.4",
-    "get-blob-duration": "^1.2.0",
+   
+  
     "http-client": "^4.3.1",
     "jquery": "^3.6.0",
     "material": "^0.4.3",
-    "net": "^1.0.2",
-    "ng-mat-carousel": "^0.11.1",
-    "ngx-image-compress": "^13.1.10",
-    "ngx-socket-io": "^4.2.0",
-    "pako": "^2.0.4",
+    
+   
+    
+    
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",
     "rxjs-compat": "^6.6.7",
-    "snappyjs": "^0.6.1",
-    "sockjs-client": "^1.6.0",
-    "stompjs": "^2.3.3",
-    "ts-md5": "^1.2.11",
-    "tslib": "^2.3.0",
-    "zlib": "^1.0.5",
+    
+ 
+
+    
     "zone.js": "~0.11.4",
     "@angular/cli": "~13.3.3",
     "@angular/compiler-cli": "~13.3.0",
