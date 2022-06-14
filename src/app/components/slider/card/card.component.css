@@ -18,12 +18,10 @@
   display: block;
   opacity: 0;
   transition: 300ms ease;
-  /* display: none; */
 }
 
 .slider-card-img.active {
   opacity: 1;
-  /* display: flex; */
 }
 
 .silder-card-img-title {
