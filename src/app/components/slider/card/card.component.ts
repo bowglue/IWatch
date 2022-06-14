@@ -179,7 +179,7 @@ export class CardComponent implements OnInit, AfterViewInit {
             this.mediaSource.endOfStream();
           }
         },
-      }),
+      })
     );
 
     const pause$ = fromEvent(this.videoplayer.nativeElement, 'pause').pipe(
@@ -204,12 +204,7 @@ export class CardComponent implements OnInit, AfterViewInit {
 
   mute$ = this.cardInfoService.muteSubject$.pipe(
     tap((val) => {
-      this.mute =val;
-      // val
-      //   ? (this.muteImageSrc =
-      //       '../../../assets/image/1x/outline_volume_off_white_24dp.png')
-      //   : (this.muteImageSrc =
-      //       '../../../assets/image/1x/outline_volume_up_white_24dp.png');
+      this.mute = val;
     })
   );
 
@@ -220,8 +215,8 @@ export class CardComponent implements OnInit, AfterViewInit {
     this.cardInfoService.muteChangeHandler();
   }
 
-  handleCardFocus() {
-    // this.cardInfoService.CardFocus$ = of(this.movie);
-    // document.querySelector('body')?.classList.add('focusCard');
+  handleCardFocus(movie: MovieInfo) {
+    this.cardInfoService.movieFocusHandler(movie);
+    document.querySelector('body')?.classList.add('focusCard');
   }
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { of } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { EMPTY, of } from 'rxjs';
 import { MovieInfo } from 'src/app/models/movie';
 import { CardInfoService } from 'src/app/services/card-info/card-info.service';
 
@@ -9,20 +9,14 @@ import { CardInfoService } from 'src/app/services/card-info/card-info.service';
   styleUrls: ['./card-focus.component.css'],
 })
 export class CardFocusComponent implements OnInit {
-  cardFocusInfo!: MovieInfo;
+  @Input() movie!: MovieInfo;
   constructor(private cardInfoService: CardInfoService) {}
 
-  ngOnInit() {
-    this.cardInfoService.CardFocus$.subscribe({
-      next: (data) => {
-        this.cardFocusInfo = data;
-      },
-    });
-  }
+  ngOnInit() {}
 
   handleQuitCardFocus(element: HTMLElement, event: Event): void {
     if (event.target == element) {
-      this.cardInfoService.CardFocus$ = of();
+      this.cardInfoService.movieFocusHandler(undefined);
     }
     document.querySelector('body')?.classList.remove('focusCard');
   }

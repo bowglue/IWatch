@@ -15,38 +15,29 @@
           </mat-error>
         </mat-error>
       </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label class="login">Image Size</mat-label>
+        <input type="text" matInput (change)="setImageSize($event)" />
+      </mat-form-field>
       <mat-label>Movie image</mat-label>
       <input type="file" accept="image/*" (change)="compressFile($event)" />
-      <mat-label>Movie trailer</mat-label>
-      <input type="file" accept="video/*" (change)="createVideoChunk($event)" />
+      <mat-label>Movie Title</mat-label>
+      <input
+        type="file"
+        accept="image/*"
+        (change)="readFileTitle($event)"
+      />
+      <mat-label>Movie Focus</mat-label>
+      <input
+        type="file"
+        accept="image/*"
+        (change)="readFileFocus($event)"
+      />
+      <!-- <mat-label>Movie trailer</mat-label>
+      <input type="file" accept="video/*" (change)="createVideoChunk($event)" /> -->
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Login</button>
       </div>
     </form>
   </div>
 </div>
-
-<!-- <div class="card-movie">
-  <app-card [movie]="movie1"></app-card>
-</div>
-<div class="card-movie">
-  <app-card [movie]="movie2"></app-card>
-</div> -->
-<!-- <div>
-  <input
-    type="file"
-    accept="video/*"
-    value="chunk"
-    (change)="createVideoChunk($event)"
-  />
-  <button (click)="streamVideo()">Stream Video</button>
-  <button (click)="getTrailerChunk()">Get Trailer Video</button>
-</div>
-<video
-  id="video"
-  autoplay
-  width="640"
-  height="360"
-  controls
-  #videoPlayer
-></video> -->

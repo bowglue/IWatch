@@ -31,6 +31,9 @@ export class AdminComponent implements OnInit {
   mediaSource!: MediaSource;
   sourceBuffer!: SourceBuffer;
   interval: any;
+  imageSize!: number;
+  movieTitle!: string;
+  movieFocus!: string;
 
   ngOnInit() {
     this.initForm();
@@ -40,6 +43,8 @@ export class AdminComponent implements OnInit {
     this.movieForm = this.formBuilder.group({
       movie_name: new FormControl('', [Validators.required]),
       movie_image: new FormControl('', [Validators.required]),
+      movie_title: new FormControl('', [Validators.required]),
+      movie_focus: new FormControl('', [Validators.required]),
     });
   }
 
@@ -110,7 +115,7 @@ export class AdminComponent implements OnInit {
 
   getTrailerChunk() {
     this.cardInfoService
-      .getMovieTrailer(1,1)
+      .getMovieTrailer(1, 1)
       .pipe(first())
       .subscribe((res) => {
         console.log(res);
@@ -124,12 +129,15 @@ export class AdminComponent implements OnInit {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (_ev) => {
-        let transform: string =
-          reader.result != undefined ? reader.result?.toString() : '';
-        file.type === 'image/webp';
-        let resize = this.compressImage(transform, 0.3).then((data) => {
-          this.imgCompressed = data;
-        });
+        // let transform: string =
+        //   reader.result != undefined ? reader.result?.toString() : '';
+        // file.type === 'image/webp';
+        this.imgCompressed = reader.result as string;
+        // let resize = this.compressImage(transform, this.imageSize).then(
+        //   (data) => {
+        //     this.imgCompressed = data;
+        //   }
+        // );
       };
     }
   }
@@ -159,10 +167,40 @@ export class AdminComponent implements OnInit {
     return img;
   }
 
+  readFileTitle(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (_ev) => {
+        console.log(reader.result);
+        this.movieTitle = reader.result as string;
+      };
+    }
+  }
+
+  readFileFocus(event: any): void {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (_ev) => {
+        console.log(reader.result);
+        this.movieFocus = reader.result as string;
+        
+      };
+    }
+  }
+
+  setImageSize(event: any) {
+    this.imageSize = event.target.value;
+  }
+
   onSubmit(): void {
     this.movieForm.controls['movie_image'].setValue(this.imgCompressed);
-    //this.movieForm.controls['movie_trailer'].setValue(this.videoCompressed);
-    //console.log(this.movieForm.value);
+    this.movieForm.controls['movie_title'].setValue(this.movieTitle);
+    this.movieForm.controls['movie_focus'].setValue(this.movieFocus);
+    console.log(this.movieForm.get('movie_title')?.value);
 
     this.adminService
       .upload(this.movieForm.value)

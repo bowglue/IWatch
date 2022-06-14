@@ -2,36 +2,54 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
-  combineLatest,
   concatMap,
-  first,
+  EMPTY,
   map,
   Observable,
+  of,
   shareReplay,
-  startWith,
   Subject,
   Subscription,
   tap,
 } from 'rxjs';
-import { CardsliderComponent } from 'src/app/components/slider/cardslider/cardslider.component';
 import { MovieInfo } from 'src/app/models/movie';
+import { isUndefined } from 'util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CardInfoService {
   cardMute: boolean = false;
-  CardFocus$!: Observable<MovieInfo>;
   cardsPerPage: number = 5;
   subscribe!: Subscription;
   moviesSub!: Subscription;
-
   constructor(private httpClient: HttpClient) {}
 
   private muteSubject = new BehaviorSubject<boolean>(false);
   muteSubject$ = this.muteSubject.asObservable();
 
   movies$ = this.getMovieInfo(0, 2 * this.cardsPerPage);
+
+  private cardFocusSubject = new Subject<MovieInfo | undefined>();
+  cardFocusSubject$ = this.cardFocusSubject.pipe(
+    concatMap((movie) =>
+      movie == undefined
+        ? of(undefined)
+        : this.getFocusImage(movie.movie_id).pipe(
+            map(
+              (movieFocus) =>
+                ({
+                  ...movie,
+                  movie_focus: movieFocus.movie_focus,
+                } as MovieInfo)
+            )
+          )
+    ),
+  );
+
+  movieFocusHandler(movie: MovieInfo | undefined): void {
+    this.cardFocusSubject.next(movie);
+  }
 
   muteChangeHandler(): void {
     this.muteSubject.next((this.cardMute = !this.cardMute));
@@ -42,7 +60,7 @@ export class CardInfoService {
       .get<MovieInfo[]>('/server/api/v1/movie/image', {
         params: { page, numberMovie },
       })
-      .pipe(shareReplay(1));
+      .pipe(/*shareReplay(1)*/);
     return request;
   }
 
@@ -51,6 +69,13 @@ export class CardInfoService {
       params: { movieId, segmentId },
       responseType: 'blob',
     });
+    return request;
+  }
+
+  getFocusImage(id: number): Observable<MovieInfo> {
+    const request = this.httpClient.get<MovieInfo>(
+      '/server/api/v1/movie/focus/' + id
+    );
     return request;
   }
 }

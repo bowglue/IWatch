@@ -5,11 +5,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 1;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 24, 0.65);
+  background-color: rgba(4, 0, 27, 0.75);
   color: white;
-  animation: popup 500ms forwards ease;
+  animation: popup 400ms forwards ease;
+ 
 }
 
 .card-focus-content {
@@ -17,15 +18,23 @@
   overflow: hidden;
   position: relative;
   width: 65%;
+  height: fit-content;
   margin: auto;
   border-radius: 10px;
-  display: block;
-  box-shadow: 10px 10px 10px black;
+  display: flex;
+  justify-content: center;
+  /* box-shadow: 10px 10px 10px black; */
+  background-color: #000000;
+  border: 3px solid #202652;
+  box-shadow: 0px 0px 20px #181f4d;
 }
+
 
 .card-focus-content > img {
   width: 100%;
+  height: 100%;
   animation: backAn 25s forwards ease;
+ 
 }
 
 .card-focus-title {
@@ -38,10 +47,9 @@
   margin: 80px 100px;
 }
 
-.card-focus-title > h1 {
+.title{
   transform: translateY(110%);
   animation: titleAnimation 1s forwards ease;
-  animation-delay: 300ms;
 }
 
 .card-focus-bottom-overlay {
@@ -53,17 +61,15 @@
   width: 40%;
 }
 
-.card-focus-bottom-overlay > img {
+.image {
   width: 100%;
   opacity: 0;
   animation: titleAnimation 1s forwards ease;
-  animation-delay: 500ms;
 }
 
 .card-focus-button-container {
   opacity: 0;
   animation: buttonAnimation 1s ease forwards;
-  animation-delay: 800ms;
   padding-top: 2%;
   display: flex;
   justify-content: center;
@@ -112,16 +118,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
 }
 
 .card-focus-suggestion-content {
-  /* background-color: yellow; */
   white-space: nowrap;
   width:70%;
   margin: auto;
 }
 
+.animation{
+  animation-delay: calc( 0.4s * var(--i));
+}
 
 @keyframes titleAnimation {
   0% {

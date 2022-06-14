@@ -43,7 +43,7 @@ export class SliderEntry extends SliderController {
       ...this.cardSliderComponent.sliderMovieInfo,
       this.cardSliderComponent.sliderMovieInfo[0],
     ];
-    
+
     this.cardSliderComponent.sliderController = new SliderNext(
       this.cardSliderComponent
     ).getNewInstance();
@@ -57,7 +57,7 @@ export class SliderEntry extends SliderController {
       case 0:
         return '0% 50%';
 
-      case this.cardSliderComponent.cardsPerPage -1:
+      case this.cardSliderComponent.cardsPerPage - 1:
         return '100% 50%';
 
       default:

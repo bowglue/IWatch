@@ -2,11 +2,9 @@
   <app-cardslider> </app-cardslider>
   <app-cardslider> </app-cardslider>
   <app-cardslider> </app-cardslider>
-  <!-- <app-cardslider> </app-cardslider>
-  <app-cardslider> </app-cardslider> -->
-  <app-card-focus *ngIf="cardInfoService.CardFocus$ | async"></app-card-focus>
+  <app-cardslider> </app-cardslider>
+  <app-cardslider> </app-cardslider>
+  <div *ngIf="cardInfoService.cardFocusSubject$ | async as cardFocus">
+    <app-card-focus [movie]="cardFocus"></app-card-focus>
+  </div>
 </div>
-<ng-template #sliderLoading>
-  <!-- <app-cardslider></app-cardslider> -->
-</ng-template>
-

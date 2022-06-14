@@ -4,21 +4,27 @@
   #FOCUS
 >
   <div class="card-focus-content">
-    <img src="{{ cardFocusInfo.movie_focus }}" alt="" />
+    <img src="{{ movie.movie_focus }}" alt="" />
+
     <div class="card-focus-title">
-      <h1>
-        {{ cardFocusInfo.movie_name }}
+      <h1 class="title animation" style="--i: 0">
+        {{ movie.movie_name }}
       </h1>
     </div>
 
     <div class="card-focus-right-overlay">
       <div class="card-focus-suggestion-content">
-       <app-card-suggestion></app-card-suggestion>
+        <app-card-suggestion></app-card-suggestion>
       </div>
     </div>
     <div class="card-focus-bottom-overlay">
-      <img src="{{ cardFocusInfo.movie_title }}" alt="" />
-      <div class="card-focus-button-container">
+      <img
+        class="image animation"
+        style="--i: 1"
+        src="{{ movie.movie_title }}"
+        alt=""
+      />
+      <div class="card-focus-button-container animation" style="--i: 2">
         <div class="card-focus-button">
           <p>Watch movie</p>
         </div>
@@ -29,4 +35,3 @@
     </div>
   </div>
 </div>
-im

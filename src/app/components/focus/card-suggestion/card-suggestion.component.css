@@ -1,44 +1,75 @@
-.card-suggestion-container{
-    position:relative;
-    width:100%;
-    overflow: hidden;
-    border-radius: 10px;
-    /* background: red; */
-    
+.card-suggestion-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  /* background: red; */
 }
 
-.card-suggestion-title{
-    width: fit-content;
-    margin: auto;
-  }
-  
-  .card-suggestion-item {
-    /* background-color: blue; */
-    box-sizing: border-box;
-    width:100%;
-    white-space: normal;
-    padding: 0.3vw 0;
-    opacity: 0;
-    animation: SuggestionAnimation 1s forwards ease;
-    animation-delay: calc(.9s + .2s * var(--i));
-  }
+.card-suggestion-title {
+  width: fit-content;
+  margin: auto;
+}
 
-  .card-suggestion-item> img{
-      width:100%;
-      border-radius: 10px;
-  }
+.title {
+  opacity: 0;
+  animation: SuggestionAnimation 1s forwards ease;
+}
 
+.card-suggestion-item {
+   /* background-color: blue;  */
   
+  box-sizing: border-box;
+  width: 100%;
+  white-space: normal;
+  padding: 0.3vw 0;
+  opacity: 0;
+  animation: SuggestionAnimation 1s forwards ease;
+  /* animation-delay: calc(0.9s + 0.2s * var(--i)); */
+}
+
+.animation {
+  animation-delay: calc(0.9s + 0.2s * var(--i));
+}
+
+.card-suggestion-image{
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.silder-card-img-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  width: 100%;
+  height: 65%;
+}
+
+.silder-card-img-title > img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 35%;
+  margin: 10px 20px;
+}
+
 @keyframes SuggestionAnimation {
-    0% {
-      transform: translateY(110%);
-      opacity: 0;
-    }
-    60% {
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0%);
-      opacity: 1;
-    }
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
   }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}

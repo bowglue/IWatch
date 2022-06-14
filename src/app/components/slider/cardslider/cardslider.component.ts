@@ -3,16 +3,12 @@ import {
   combineLatest,
   concatMap,
   EMPTY,
-  forkJoin,
   map,
-  merge,
   shareReplay,
   startWith,
   Subject,
-  switchMap,
   tap,
   timer,
-  zip,
 } from 'rxjs';
 import { MovieInfo } from 'src/app/models/movie';
 import { CardInfoService } from 'src/app/services/card-info/card-info.service';
@@ -44,16 +40,16 @@ export class CardsliderComponent implements OnInit {
     this.sliderController = new SliderEntry(this).getNewInstance();
   }
 
-  initializeMovie$ = this.cardInfoService
-    .movies$
-    .pipe(
-      tap((movies) => {
-        this.pages[0] = true;
-        this.pages[1] = true;
-        this.sliderMovieInfo = [...movies];
-      }),
-      shareReplay(1)
-    );
+  initializeMovie$ = this.cardInfoService.movies$.pipe(
+    tap((movies) => {
+      console.log(movies);
+      
+      this.pages[0] = true;
+      this.pages[1] = true;
+      this.sliderMovieInfo = [...movies];
+    }),
+    shareReplay(1)
+  );
 
   slideItem = new Subject<number>();
   slideItem$ = this.slideItem.asObservable().pipe(
