@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { first, Observable, shareReplay, tap } from 'rxjs';
-import { MockCardInfoService } from 'src/app/mocks/services/MockCardInfoService';
-import { MovieInfo } from 'src/app/models/movie';
 import { CardInfoService } from 'src/app/services/card-info/card-info.service';
 
 @Component({

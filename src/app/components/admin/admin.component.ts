@@ -3,10 +3,9 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { first } from 'rxjs';
-import { MovieInfo } from 'src/app/models/movie';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { CardInfoService } from 'src/app/services/card-info/card-info.service';
 

@@ -8,7 +8,7 @@ import {
   startWith,
   Subject,
   tap,
-  timer,
+  timer
 } from 'rxjs';
 import { MovieInfo } from 'src/app/models/movie';
 import { CardInfoService } from 'src/app/services/card-info/card-info.service';

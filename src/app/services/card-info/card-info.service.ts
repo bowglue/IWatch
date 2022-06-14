@@ -2,18 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
-  concatMap,
-  EMPTY,
-  map,
+  concatMap, map,
   Observable,
-  of,
-  shareReplay,
-  Subject,
-  Subscription,
-  tap,
+  of, Subject,
+  Subscription
 } from 'rxjs';
 import { MovieInfo } from 'src/app/models/movie';
-import { isUndefined } from 'util';
 
 @Injectable({
   providedIn: 'root',
