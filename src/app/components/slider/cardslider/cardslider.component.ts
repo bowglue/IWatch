@@ -8,7 +8,7 @@ import {
   startWith,
   Subject,
   tap,
-  timer
+  timer,
 } from 'rxjs';
 import { MovieInfo } from 'src/app/models/movie';
 import { CardInfoService } from 'src/app/services/card-info/card-info.service';
@@ -43,7 +43,7 @@ export class CardsliderComponent implements OnInit {
   initializeMovie$ = this.cardInfoService.movies$.pipe(
     tap((movies) => {
       console.log(movies);
-      
+
       this.pages[0] = true;
       this.pages[1] = true;
       this.sliderMovieInfo = [...movies];

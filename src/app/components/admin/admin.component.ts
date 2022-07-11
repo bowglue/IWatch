@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
 
   @ViewChild('videoPlayer') videoplayer!: ElementRef;
   movieForm!: FormGroup;
-  imgCompressed!: string;
+  imgCompressed!: number[];
   videoCompressed!: any;
   arrayOfBlob: Uint8Array[] = [];
   i: number = -1;
@@ -31,8 +31,8 @@ export class AdminComponent implements OnInit {
   sourceBuffer!: SourceBuffer;
   interval: any;
   imageSize!: number;
-  movieTitle!: string;
-  movieFocus!: string;
+  movieTitle!: number[];
+  movieFocus!: number[];
 
   ngOnInit() {
     this.initForm();
@@ -82,9 +82,9 @@ export class AdminComponent implements OnInit {
     var id = 1;
     const buf = new Uint8Array(arrayBuffer);
     for (let i = 0; i < arrayBuffer.byteLength; i += size) {
-      this.arrayOfBlob.push(buf.slice(i, i + size));
+     // this.arrayOfBlob.push(buf.slice(i, i + size));
       var fd = new FormData();
-      fd.append('movie_id', JSON.stringify(25));
+      fd.append('movie_id', JSON.stringify(1));
       fd.append('segment_id', JSON.stringify(id++));
       fd.append('data', file.slice(i, i + size));
       await fetch('/server/api/v1/trailer', { method: 'post', body: fd }).then(
@@ -126,12 +126,18 @@ export class AdminComponent implements OnInit {
 
     if (file) {
       const reader = new FileReader();
-      reader.readAsDataURL(file);
+      reader.readAsArrayBuffer(file);
       reader.onload = (_ev) => {
+        
+        const test =  reader.result as Uint8Array;
+        console.log('test: ', test );
+        
+        this.imgCompressed = Array.from(new Uint8Array(reader.result as Uint8Array));
+        console.log(this.imgCompressed);
         // let transform: string =
         //   reader.result != undefined ? reader.result?.toString() : '';
         // file.type === 'image/webp';
-        this.imgCompressed = reader.result as string;
+        //this.imgCompressed = reader.result as string;
         // let resize = this.compressImage(transform, this.imageSize).then(
         //   (data) => {
         //     this.imgCompressed = data;
@@ -170,10 +176,10 @@ export class AdminComponent implements OnInit {
     const file: File = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.readAsDataURL(file);
+      reader.readAsArrayBuffer(file);
       reader.onload = (_ev) => {
         console.log(reader.result);
-        this.movieTitle = reader.result as string;
+        this.movieTitle = Array.from(new Uint8Array(reader.result as Uint8Array));
       };
     }
   }
@@ -182,10 +188,10 @@ export class AdminComponent implements OnInit {
     const file: File = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.readAsDataURL(file);
+      reader.readAsArrayBuffer(file);
       reader.onload = (_ev) => {
         console.log(reader.result);
-        this.movieFocus = reader.result as string;
+        this.movieFocus = Array.from(new Uint8Array(reader.result as Uint8Array));
         
       };
     }
