@@ -15,7 +15,7 @@
   height: 500px;
   background-image: linear-gradient(
     to top,#141414,transparent 50%),
-   url("src\assets\image\background.jpg");
+   /*url("src\assets\image\background.jpg")*/;
  background-size: contain;
  background-repeat: repeat-x;
 }
