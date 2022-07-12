@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators
 } from '@angular/forms';
 import { first } from 'rxjs';
@@ -16,13 +16,13 @@ import { CardInfoService } from 'src/app/services/card-info/card-info.service';
 })
 export class AdminComponent implements OnInit {
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private adminService: AdminService,
     private cardInfoService: CardInfoService
   ) {}
 
   @ViewChild('videoPlayer') videoplayer!: ElementRef;
-  movieForm!: FormGroup;
+  movieForm!: UntypedFormGroup;
   imgCompressed!: number[];
   videoCompressed!: any;
   arrayOfBlob: Uint8Array[] = [];
@@ -40,10 +40,10 @@ export class AdminComponent implements OnInit {
 
   initForm(): void {
     this.movieForm = this.formBuilder.group({
-      movie_name: new FormControl('', [Validators.required]),
-      movie_image: new FormControl('', [Validators.required]),
-      movie_title: new FormControl('', [Validators.required]),
-      movie_focus: new FormControl('', [Validators.required]),
+      movie_name: new UntypedFormControl('', [Validators.required]),
+      movie_image: new UntypedFormControl('', [Validators.required]),
+      movie_title: new UntypedFormControl('', [Validators.required]),
+      movie_focus: new UntypedFormControl('', [Validators.required]),
     });
   }
 

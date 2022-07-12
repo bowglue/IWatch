@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,11 +17,11 @@ import { AccountService } from 'src/app/services/account-service/account.service
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm!: FormGroup;
+  registerForm!: UntypedFormGroup;
   loading = false;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private accountService: AccountService,
     private router: Router
   ) {}
@@ -32,10 +32,10 @@ export class RegisterComponent implements OnInit {
 
   initForm(): void {
     this.registerForm = this.formBuilder.group({
-      first_name: new FormControl('', [Validators.required]),
-      last_name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      first_name: new UntypedFormControl('', [Validators.required]),
+      last_name: new UntypedFormControl('', [Validators.required]),
+      email: new UntypedFormControl('', [Validators.required, Validators.email]),
+      password: new UntypedFormControl('', [Validators.required]),
     });
   }
 
