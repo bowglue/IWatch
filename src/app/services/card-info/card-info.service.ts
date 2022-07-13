@@ -51,7 +51,7 @@ export class CardInfoService {
 
   getMovieInfo(page: number, numberMovie: number): Observable<MovieInfo[]> {
     const request = this.httpClient
-      .get<MovieInfo[]>('/server/api/v1/movie/image', {
+      .get<MovieInfo[]>('/https://bowglue.herokuapp.com/api/v1/movie/image', {
         params: { page, numberMovie },
       })
       .pipe(/*shareReplay(1)*/);
