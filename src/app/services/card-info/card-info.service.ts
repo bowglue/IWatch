@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CardInfoService {
-  cardMute: boolean = false;
+  cardMute: boolean = true;
   cardsPerPage: number = 5;
   subscribe!: Subscription;
   moviesSub!: Subscription;
