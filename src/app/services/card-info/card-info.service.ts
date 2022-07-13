@@ -53,7 +53,7 @@ export class CardInfoService {
 
   getMovieInfo(page: number, numberMovie: number): Observable<MovieInfo[]> {
     const request = this.httpClient
-      .get<MovieInfo[]>(this.baseUrl +'/api/v1/movie/image', {
+      .get<MovieInfo[]>(this.baseUrl + '/api/v1/movie/image', {
         params: { page, numberMovie },
       })
       .pipe(/*shareReplay(1)*/);
@@ -61,7 +61,7 @@ export class CardInfoService {
   }
 
   getMovieTrailer(movieId: number, segmentId: number): Observable<Blob> {
-    const request = this.httpClient.get('/server/api/v1/trailer/segment', {
+    const request = this.httpClient.get(this.baseUrl + '/api/v1/trailer/segment', {
       params: { movieId, segmentId },
       responseType: 'blob',
     });
@@ -70,7 +70,7 @@ export class CardInfoService {
 
   getFocusImage(id: number): Observable<MovieInfo> {
     const request = this.httpClient.get<MovieInfo>(
-      '/server/api/v1/movie/focus/' + id
+      this.baseUrl + '/api/v1/movie/focus/' + id
     );
     return request;
   }
