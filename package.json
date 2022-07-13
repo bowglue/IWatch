@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve dist/client-app index.html $PORT",
-    "build": "ng build",
+    "start": "http-server-spa dist/client-app index.html $PORT",
+    "build": "ng build && && npm install -g http-server-spa",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "heroku-postbuild": "ng build"
