@@ -8,6 +8,7 @@ import {
   Subscription
 } from 'rxjs';
 import { MovieInfo } from 'src/app/models/movie';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ export class CardInfoService {
   subscribe!: Subscription;
   moviesSub!: Subscription;
   constructor(private httpClient: HttpClient) {}
+  baseUrl: string = environment.baseUrl;
 
   private muteSubject = new BehaviorSubject<boolean>(false);
   muteSubject$ = this.muteSubject.asObservable();
@@ -51,7 +53,7 @@ export class CardInfoService {
 
   getMovieInfo(page: number, numberMovie: number): Observable<MovieInfo[]> {
     const request = this.httpClient
-      .get<MovieInfo[]>('/server/api/v1/movie/image', {
+      .get<MovieInfo[]>(this.baseUrl +'/api/v1/movie/image', {
         params: { page, numberMovie },
       })
       .pipe(/*shareReplay(1)*/);
