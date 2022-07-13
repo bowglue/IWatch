@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://bowglue.herokuapp.com/",
+  baseUrl: "https://bowglue.herokuapp.com",
 };
 
 /*
