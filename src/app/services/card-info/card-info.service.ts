@@ -21,7 +21,7 @@ export class CardInfoService {
   constructor(private httpClient: HttpClient) {}
   baseUrl: string = environment.baseUrl;
 
-  private muteSubject = new BehaviorSubject<boolean>(false);
+  private muteSubject = new BehaviorSubject<boolean>(this.cardMute);
   muteSubject$ = this.muteSubject.asObservable();
 
   movies$ = this.getMovieInfo(0, 2 * this.cardsPerPage);
