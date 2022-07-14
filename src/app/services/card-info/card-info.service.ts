@@ -18,8 +18,10 @@ export class CardInfoService {
   cardsPerPage: number = 5;
   subscribe!: Subscription;
   moviesSub!: Subscription;
-  constructor(private httpClient: HttpClient) {}
   baseUrl: string = environment.baseUrl;
+  
+  constructor(private httpClient: HttpClient) {}
+  
 
   private muteSubject = new BehaviorSubject<boolean>(this.cardMute);
   muteSubject$ = this.muteSubject.asObservable();

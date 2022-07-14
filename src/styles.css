@@ -4,7 +4,8 @@ body {
   overflow-x: hidden;
   font-family: 'Sora', sans-serif;
   font-weight: 400;
-  background: #141414;
+  background: #1d1e21;
+  /* background-image:url("src\assets\image\dark-background.jpg"); */
 }
 body::-webkit-scrollbar {
   display: none;

@@ -1,9 +1,9 @@
 {
   "/server": {
-    //"target": "http://localhost:8080",
-    "target": "https://bowglue.herokuapp.com/",
+    "target": "http://localhost:8080",
+    //"target": "https://bowglue.herokuapp.com/",
     "secure": false,
-    "changeOrigin": true,
+    "changeOrigin": false,
     "logLevel": "debug",
     "pathRewrite": {
       "^/server": ""

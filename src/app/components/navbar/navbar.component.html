@@ -1,10 +1,7 @@
 <div class="nav-image">
-  <!-- <nav
-    class="navbar navbar-expand-lg navbar-dark bg-dark"
-    *ngIf="accountService.isLoggedIn | async"
-  > -->
   <nav
     class="navbar navbar-expand-lg navbar-dark bg-dark"
+    *ngIf="accountService.isLoggedIn | async"
   >
     <a class="navbar-brand" routerLink="/home">Title/Logo</a>
 
@@ -43,7 +40,12 @@
         <a class="nav-item nav-link" routerLink="/home">Other</a>
       </li>
       <mat-divider [vertical]="true"></mat-divider>
-      <li class="nav-item dropdown">
+      <li class="nav-item active">
+        <a class="nav-item nav-link" (click)="accountService.logout()">
+          Logout
+        </a>
+      </li>
+      <!-- <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
           href="#"
@@ -62,9 +64,7 @@
             Logout
           </a>
         </div>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </div>
- 
-
