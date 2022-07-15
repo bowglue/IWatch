@@ -5,12 +5,14 @@ import { RegisterComponent } from '../components/account/register/register.compo
 import { AdminComponent } from '../components/admin/admin.component';
 import { HomeComponent } from '../components/home/home.component';
 import { AuthGuard } from '../helpers/auth.guard';
+import { AccountGuard } from '../helpers/account.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'home',
@@ -20,10 +22,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AccountGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [AccountGuard]
   },
 ];
 
