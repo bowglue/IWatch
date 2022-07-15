@@ -1,7 +1,7 @@
 {
   "/server": {
     "target": "http://localhost:8080",
-    //"target": "https://bowglue.herokuapp.com/",
+    //"target": "https://bowglue.herokuapp.com",
     "secure": false,
     "changeOrigin": false,
     "logLevel": "debug",
