@@ -8,7 +8,7 @@
 }
 
 .navbar{
-  font-size: 20px;
+  font-size: 0.9vw;
 }
 
 .mat-divider {
@@ -17,14 +17,14 @@
   margin-left: 0.5rem;
 }
 
-.nav-image {
+/* .nav-image {
   height: 500px;
   background-image: linear-gradient(
     to top,#1d1e21,transparent 50%),
    url("src\assets\image\background.jpg");
  background-size: contain;
  background-repeat: repeat-x;
-}
+} */
 
 .navbar-brand {
   padding-left: 1rem;

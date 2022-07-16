@@ -42,7 +42,7 @@
   bottom: 0;
   left: 0;
   width: 35%;
-  margin: 10px 20px;
+  margin: 0.5vw 1.25vw;
 }
 
 .slider-card-content {
@@ -66,11 +66,16 @@
 
 .slider-card-title {
   position: absolute;
+  display: block;
   top: 0;
   left: 0;
   right: 0;
   margin: 10px 20px;
   width: fit-content;
+}
+
+h6{
+  font-size: 0.75vw;
 }
 
 .slider-card-icon {
@@ -79,14 +84,17 @@
   top: 0;
   margin: 10px 20px;
   display: flex;
-  display: none;
+  opacity: 0;
+  transition: 400ms ease;
 }
-.slider-card-icon.active{
-  display:flex;
-}
+  .slider-card-icon.active{
+    opacity: 1;
+  }
 
 .slider-card-icon > img {
   padding: 0px 3px;
+  width: 100%;
+  height: 100%;
 }
 
 .favorites {
