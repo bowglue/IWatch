@@ -22,17 +22,9 @@
       <mat-label>Movie image</mat-label>
       <input type="file" accept="image/*" (change)="compressFile($event)" />
       <mat-label>Movie Title</mat-label>
-      <input
-        type="file"
-        accept="image/*"
-        (change)="readFileTitle($event)"
-      />
+      <input type="file" accept="image/*" (change)="readFileTitle($event)" />
       <mat-label>Movie Focus</mat-label>
-      <input
-        type="file"
-        accept="image/*"
-        (change)="readFileFocus($event)"
-      />
+      <input type="file" accept="image/*" (change)="readFileFocus($event)" />
       <mat-label>Movie trailer</mat-label>
       <input type="file" accept="video/*" (change)="createVideoChunk($event)" />
       <div class="form-group">
@@ -41,3 +33,6 @@
     </form>
   </div>
 </div>
+<!-- <div class="prototype">
+  <app-card-header ></app-card-header>
+</div> -->

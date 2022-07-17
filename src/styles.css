@@ -3,7 +3,7 @@
 body {
   overflow-x: hidden;
   font-family: 'Montserrat', sans-serif;
-  background: #13181c;
+  background: hsl(207, 19%, 9%);
 }
 body::-webkit-scrollbar {
   display: none;

@@ -1,5 +1,5 @@
 .slider-row {
-  margin: 3vw 0;
+  margin: 2vw 0;
   box-sizing: border-box;
 }
 
@@ -8,7 +8,7 @@
   width:fit-content;
   line-height: 1.3;
   margin-left: 30px;
-  font-size: 1.75vw;
+  font-size: 1.5vw;
   /* border-bottom: 5px solid white; */
 }
 

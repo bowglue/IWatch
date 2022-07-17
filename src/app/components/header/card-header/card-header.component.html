@@ -1,17 +1,41 @@
-<div class="item">
-  <ngb-carousel *ngIf="images">
-    <ng-template ngbSlide *ngFor="let image of images; let i = index">
-      <div class="picsum-img-wrapper">
+<div class="caroussel" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+  <div class="item">
+    <ng-container *ngFor="let image of images; let i = index">
+      <div
+        class="item-content"
+        *ngIf="i === cardInfoService.index"
+        @carouselAnimation
+      >
         <img
-          src="../../../../assets/image/{{ image }}"
-          alt="Random first slide"
+          src="../../../../assets/image/{{ images[cardInfoService.index] }}"
+          alt=""
         />
-        <!-- <img src="{{image}}" alt="Random first slide"> -->
+        <div class="card-info-container" *ngIf="indicators">
+          <img
+            src="../../../../assets/image/{{ titles[cardInfoService.index] }}"
+            alt=""
+          />
+        </div>
       </div>
-      <!-- <div class="carousel-caption">
-        <h3>10 seconds between slides...</h3>
-        <p>This carousel uses customized default values.</p>
-      </div> -->
-    </ng-template>
-  </ngb-carousel>
+    </ng-container>
+  </div>
+
+  <div class="indicators-container" *ngIf="indicators">
+    <div class="indicators-item" *ngFor="let image of images; let i = index">
+      <div *ngIf="i == cardInfoService.index; else notShow">
+        <img
+          src="../../../../assets/image/1x/outline_radio_button_checked_white_24dp.png"
+          alt=""
+        />
+      </div>
+
+      <ng-template #notShow>
+        <img
+          src="../../../../assets/image/1x/outline_radio_button_unchecked_white_24dp.png"
+          alt=""
+          (click)="carousselIndex(i)"
+        />
+      </ng-template>
+    </div>
+  </div>
 </div>

@@ -14,12 +14,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CardInfoService {
+  baseUrl: string = environment.baseUrl;
   cardMute: boolean = true;
   cardsPerPage: number = 5;
-  subscribe!: Subscription;
-  moviesSub!: Subscription;
-  baseUrl: string = environment.baseUrl;
-  
+  index: number = 0;
+
+
   constructor(private httpClient: HttpClient) {}
   
 
@@ -77,3 +77,12 @@ export class CardInfoService {
     return request;
   }
 }
+
+// function findMaxConsecutiveOnes(nums: number[]): number {
+//   for (let i = 0; i < nums.length; i++) {
+    
+    
+//   }
+
+//   return 1;
+// }
