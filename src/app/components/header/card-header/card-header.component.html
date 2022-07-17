@@ -1,8 +1,9 @@
-<div class="caroussel" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+<div class="caroussel"  (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
   <div class="item">
     <ng-container *ngFor="let image of images; let i = index">
       <div
         class="item-content"
+        [class.active]="!indicators"
         *ngIf="i === cardInfoService.index"
         @carouselAnimation
       >
