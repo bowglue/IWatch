@@ -43,9 +43,9 @@ export class CardHeaderComponent implements OnInit {
   interval!: any;
 
   ngOnInit() {
-    // if (this.indicators) {
+    if (this.indicators) {
       this.mouseLeave();
-    // }
+    }
   }
 
   carousselIndex(index: number): void {
