@@ -1,11 +1,11 @@
+<app-header></app-header>
+<div class="sliders">
+  <app-cardslider> </app-cardslider>
+  <app-cardslider> </app-cardslider>
+  <app-cardslider> </app-cardslider>
+  <app-cardslider> </app-cardslider>
+  <app-cardslider> </app-cardslider>
 
-<div class="home">
-  <app-cardslider> </app-cardslider>
-  <app-cardslider> </app-cardslider>
-  <app-cardslider> </app-cardslider>
-  <app-cardslider> </app-cardslider>
-  <app-cardslider> </app-cardslider>
-  
   <div *ngIf="cardInfoService.cardFocusSubject$ | async as cardFocus">
     <app-card-focus [movie]="cardFocus"></app-card-focus>
   </div>

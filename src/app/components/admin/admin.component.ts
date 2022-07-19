@@ -84,7 +84,7 @@ export class AdminComponent implements OnInit {
     for (let i = 0; i < arrayBuffer.byteLength; i += size) {
      // this.arrayOfBlob.push(buf.slice(i, i + size));
       var fd = new FormData();
-      fd.append('movie_id', JSON.stringify(1));
+      fd.append('movie_id', JSON.stringify(26));
       fd.append('segment_id', JSON.stringify(id++));
       fd.append('data', file.slice(i, i + size));
       await fetch('/server/api/v1/trailer', { method: 'post', body: fd }).then(

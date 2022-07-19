@@ -1,11 +1,10 @@
-<div class="header">
-  <div class="header-background">
-    <app-card-header [indicators]="false" ></app-card-header>
+<div class="header" *ngIf="moviesHeader$ | async as moviesHeader">
+
+    <app-card-header [indicators]="false" [movies]="moviesHeader"></app-card-header>
     <div class="header-background-gradient"></div>
-  </div>
   <div class="card-container">
       <div class="card-item">
-        <app-card-header></app-card-header>
+        <app-card-header [movies]="moviesHeader"></app-card-header>
       </div>
   </div>
 </div>

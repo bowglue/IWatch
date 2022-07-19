@@ -3,18 +3,18 @@ import { style, animate, animation, keyframes } from '@angular/animations';
 // =========================
 // Scale
 // =========================
-export const scaleIn = animation([
-  style({ opacity: 0, transform: 'scale(0.5)' }), // start state
+export const translateIn = animation([
+  style({ opacity: 1, transform: 'translateY(100%)' }), // start state
   animate(
     '{{time}} cubic-bezier(0.785, 0.135, 0.15, 0.86)',
-    style({ opacity: 1, transform: 'scale(1)' })
+    style({ opacity: 1, transform: 'translateY(0%)' })
   ),
 ]);
 
-export const scaleOut = animation([
+export const translateOut = animation([
   animate(
     '{{time}} cubic-bezier(0.785, 0.135, 0.15, 0.86)',
-    style({ opacity: 0, transform: 'scale(0.5)' })
+    style({ opacity: 0, transform: 'translateY(-100%)' })
   ),
 ]);
 

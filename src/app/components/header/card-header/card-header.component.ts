@@ -1,7 +1,9 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { tap } from 'rxjs';
+import { MovieInfo } from 'src/app/models/movie';
 import { CardInfoService } from 'src/app/services/card-info/card-info.service';
-import { fadeIn, fadeOut } from './card-header.animations';
+import { translateIn, translateOut } from './card-header.animations';
 
 @Component({
   selector: 'app-card-header',
@@ -10,47 +12,37 @@ import { fadeIn, fadeOut } from './card-header.animations';
   animations: [
     trigger('carouselAnimation', [
       transition('void => *', [
-        useAnimation(fadeIn, { params: { time: '1300ms' } }),
+        useAnimation(translateIn, { params: { time: '1300ms' } }),
       ]),
       transition('* => void', [
-        useAnimation(fadeOut, { params: { time: '1300ms' } }),
+        useAnimation(translateOut, { params: { time: '1300ms' } }),
       ]),
     ]),
   ],
 })
-export class CardHeaderComponent implements OnInit {
+export class CardHeaderComponent implements OnInit, OnDestroy {
   constructor(public cardInfoService: CardInfoService) {}
-  @Input() image!: string;
+  
+  @Input() movies!: MovieInfo[];
   @Input() indicators: boolean = true;
   index: number = 0;
-  transition: boolean = false;
-
-  images = [
-    'header1.webp',
-    'header2.webp',
-    'header3.webp',
-    'header4.webp',
-    'header5.webp',
-  ];
-
-  titles = [
-    'title26.webp',
-    'title27.webp',
-    'title28.webp',
-    'title29.webp',
-    'title30.webp',
-  ];
   interval!: any;
 
   ngOnInit() {
     if (this.indicators) {
+      this.cardInfoService.index = this.index;
       this.mouseLeave();
     }
   }
 
+  ngOnDestroy(): void {
+    console.log('destroy');
+    
+    clearInterval(this.interval);
+  }
+
   carousselIndex(index: number): void {
     console.log('click');
-    this.transition = true;
     this.cardInfoService.index = index;
     this.index = index;
   }
@@ -67,16 +59,12 @@ export class CardHeaderComponent implements OnInit {
   }
 
   carousselLoop(): void {
+    if (this.index + 1 < 5) {
       this.index++;
-      if (this.index < 5) {
-        this.carousselIndex(this.index);
-        console.log(this.index);
-        return;
-      }
-      this.index = 0;
       this.carousselIndex(this.index);
-      console.log(this.index);
+      return;
+    }
+    this.index = 0;
+    this.carousselIndex(this.index);
   }
-
-  
 }

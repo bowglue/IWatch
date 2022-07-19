@@ -31,7 +31,7 @@ export class CardsliderComponent implements OnInit {
   isSlidingItems: boolean = false;
   translateLength: number = -(100 + 100 / this.cardsPerPage);
   cardWidth: string = `${100 / this.cardsPerPage}%`;
-  pages: boolean[] = Array(Math.floor(25 / this.cardsPerPage)).fill(false);
+  pages: boolean[] = Array(Math.floor(30 / this.cardsPerPage)).fill(false);
   page: number = 0;
 
   sliderController!: SliderController;

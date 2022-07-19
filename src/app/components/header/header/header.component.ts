@@ -8,6 +8,6 @@ import { CardInfoService } from 'src/app/services/card-info/card-info.service';
 })
 export class HeaderComponent implements OnInit {
   constructor(private cardInfoService: CardInfoService) {}
-  movie$ = this.cardInfoService.getFocusImage(22);
+  moviesHeader$ = this.cardInfoService.getHeaderImage(5,5);
   ngOnInit() {}
 }

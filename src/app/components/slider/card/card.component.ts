@@ -4,7 +4,7 @@ import {
   ElementRef,
   Input,
   OnInit,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import {
   combineLatest,
@@ -15,7 +15,7 @@ import {
   Subject,
   switchMap,
   tap,
-  timer
+  timer,
 } from 'rxjs';
 import { MovieInfo } from 'src/app/models/movie';
 import { CardInfoService } from 'src/app/services/card-info/card-info.service';
@@ -128,6 +128,7 @@ export class CardComponent implements OnInit, AfterViewInit {
     const canPlay$ = fromEvent(this.videoplayer.nativeElement, 'canplay').pipe(
       tap((val) => {
         if (this.isLocalCardActive) {
+          //console.log(this.videoplayer.nativeElement.buffered.end(0));
           this.videoplayer.nativeElement.play();
         }
       }),
@@ -208,9 +209,6 @@ export class CardComponent implements OnInit, AfterViewInit {
     })
   );
 
-  test(): void {
-    this.mute = this.cardInfoService.cardMute;
-  }
   muteHandler(): void {
     this.cardInfoService.muteChangeHandler();
   }

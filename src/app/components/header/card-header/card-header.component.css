@@ -3,32 +3,30 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .item {
   height: 100%;
   width: 100%;
- 
 }
-
 
 .item-content {
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   height: 100%;
   width: 100%;
 }
 
-.item-content > img{
+.item-content > img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-.item-content.active{
-  filter: blur(4px); 
+.item-content.active {
+  filter: blur(2px);
 }
 
 .indicators-container {
@@ -46,11 +44,11 @@
   padding: 0 0.1vw;
 }
 
-.card-info-container{
+.card-info-container {
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: 3vw 3vw ;
+  padding: 3vw 3vw;
   width: 100%;
   background: linear-gradient(
     0deg,
@@ -59,6 +57,6 @@
   );
 }
 
-.card-info-container> img{
+.card-info-container > img {
   width: 20%;
 }

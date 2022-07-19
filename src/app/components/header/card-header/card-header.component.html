@@ -1,19 +1,19 @@
-<div class="caroussel"  (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+<div class="caroussel" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
   <div class="item">
-    <ng-container *ngFor="let image of images; let i = index">
+    <ng-container *ngFor="let movie of movies; let i = index">
       <div
         class="item-content"
         [class.active]="!indicators"
-        *ngIf="i === cardInfoService.index"
+        *ngIf="i === index"
         @carouselAnimation
       >
         <img
-          src="../../../../assets/image/{{ images[cardInfoService.index] }}"
+          src="data:image/webp;base64,{{ movies[cardInfoService.index].movie_focus  }}"
           alt=""
         />
-        <div class="card-info-container" *ngIf="indicators">
+        <div class="card-info-container" [hidden]="!indicators">
           <img
-            src="../../../../assets/image/{{ titles[cardInfoService.index] }}"
+            src="data:image/webp;base64,{{ movies[cardInfoService.index].movie_title }}"
             alt=""
           />
         </div>
@@ -21,15 +21,14 @@
     </ng-container>
   </div>
 
-  <div class="indicators-container" *ngIf="indicators">
-    <div class="indicators-item" *ngFor="let image of images; let i = index">
+  <div class="indicators-container" [hidden]="!indicators">
+    <div class="indicators-item" *ngFor="let movie of movies; let i = index">
       <div *ngIf="i == cardInfoService.index; else notShow">
         <img
           src="../../../../assets/image/1x/outline_radio_button_checked_white_24dp.png"
           alt=""
         />
       </div>
-
       <ng-template #notShow>
         <img
           src="../../../../assets/image/1x/outline_radio_button_unchecked_white_24dp.png"
