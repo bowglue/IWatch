@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MovieInfo } from 'src/app/models/movie';
+import { MovieFocus } from 'src/app/models/movie';
 import { CardInfoService } from 'src/app/services/card-info/card-info.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { CardInfoService } from 'src/app/services/card-info/card-info.service';
   styleUrls: ['./card-focus.component.css'],
 })
 export class CardFocusComponent implements OnInit {
-  @Input() movie!: MovieInfo;
+  @Input() focusInfo!: MovieFocus;
   constructor(private cardInfoService: CardInfoService) {}
 
   ngOnInit() {}

@@ -6,7 +6,7 @@
   <app-cardslider> </app-cardslider>
   <app-cardslider> </app-cardslider>
 
-  <div *ngIf="cardInfoService.cardFocusSubject$ | async as cardFocus">
-    <app-card-focus [movie]="cardFocus"></app-card-focus>
+  <div *ngIf="cardInfoService.cardFocusSubject$ | async as movieFocus">
+    <app-card-focus [focusInfo]="movieFocus"></app-card-focus>
   </div>
 </div>

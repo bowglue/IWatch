@@ -4,24 +4,24 @@
   #FOCUS
 >
   <div class="card-focus-content">
-    <img src="data:image/webp;base64,{{ movie.movie_focus }}" alt="" />
+    <img src="data:image/webp;base64,{{ focusInfo.movieFocus.movie_focus }}" alt="" />
    
-    <div class="card-focus-title">
-      <h2 class="title animation" style="--i: 0">
-        {{ movie.movie_name }}
+    <div class="card-focus-title animation" style="--i: 0">
+      <h2 >
+        {{ focusInfo.movieFocus.movie_name }}
       </h2>
     </div>
 
     <div class="card-focus-right-overlay">
       <div class="card-focus-suggestion-content">
-        <app-card-suggestion></app-card-suggestion>
+        <app-card-suggestion [moviesSuggestion]="focusInfo.movieSuggestion"></app-card-suggestion>
       </div>
     </div>
     <div class="card-focus-bottom-overlay">
       <img
         class="image animation"
         style="--i: 1"
-        src="data:image/webp;base64,{{ movie.movie_title }}"
+        src="data:image/webp;base64,{{ focusInfo.movieFocus.movie_title }}"
         alt=""
       />
       <div class="card-focus-button-container animation" style="--i: 2">

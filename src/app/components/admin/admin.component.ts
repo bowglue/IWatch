@@ -78,7 +78,7 @@ export class AdminComponent implements OnInit {
   }
 
   async chunkVideo(arrayBuffer: ArrayBuffer, file: File) {
-    const size = 100000;
+    const size = 300000;
     var id = 1;
     const buf = new Uint8Array(arrayBuffer);
     for (let i = 0; i < arrayBuffer.byteLength; i += size) {
@@ -91,6 +91,8 @@ export class AdminComponent implements OnInit {
         (res) => res.text()
       );
     }
+    console.log('fetch end');
+    
   }
 
   createVideoChunk(event: any) {

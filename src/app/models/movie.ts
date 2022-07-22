@@ -10,3 +10,8 @@ export interface TrailerInfo {
   movie_id?: number;
   segment_id?: number;
 }
+
+export interface MovieFocus {
+  movieFocus: MovieInfo;
+  movieSuggestion: MovieInfo[];
+}

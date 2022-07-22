@@ -1,17 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   concatMap,
-  map,
-  Observable,
+  map, Observable,
   of,
   shareReplay,
-  Subject,
-  switchMap,
-  tap,
+  Subject
 } from 'rxjs';
-import { MovieInfo } from 'src/app/models/movie';
+import { MovieFocus, MovieInfo } from 'src/app/models/movie';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -35,16 +32,19 @@ export class CardInfoService {
     concatMap((movie) =>
       movie == undefined
         ? of(undefined)
-        : this.getFocusImage(movie.movie_id).pipe(
+        : this.getFocusAndRecommendation(movie.movie_id).pipe(
             map(
-              (movieFocus) =>
+              (Focus) =>
                 ({
-                  ...movie,
-                  movie_focus: movieFocus.movie_focus,
-                } as MovieInfo)
+                  movieFocus: ({
+                    ...movie,
+                    movie_focus: Focus.movieFocus.movie_focus,
+                  }),
+                  movieSuggestion: Focus.movieSuggestion
+                } as MovieFocus)
             )
           )
-    )
+    ),
   );
 
   movieFocusHandler(movie: MovieInfo | undefined): void {
@@ -76,9 +76,9 @@ export class CardInfoService {
     return request;
   }
 
-  getFocusImage(id: number): Observable<MovieInfo> {
+  getFocusAndRecommendation(id: number): Observable<MovieFocus> {
     const request = this.httpClient
-      .get<MovieInfo>(this.baseUrl + '/api/v1/movie/focus/' + id)
+      .get<MovieFocus>(this.baseUrl + '/api/v1/movie/focus/' + id)
       .pipe(shareReplay(1));
 
     return request;
@@ -91,6 +91,13 @@ export class CardInfoService {
       })
       .pipe(shareReplay(1));
 
+    return request;
+  }
+
+  getSuggestionMovie(id: number): Observable<MovieInfo[]> {
+    const request = this.httpClient.get<MovieInfo[]>(
+      this.baseUrl + '/api/v1/movie/more/' + id
+    );
     return request;
   }
 }

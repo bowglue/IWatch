@@ -36,19 +36,15 @@ export class CardHeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('destroy');
-    
     clearInterval(this.interval);
   }
 
   carousselIndex(index: number): void {
-    console.log('click');
     this.cardInfoService.index = index;
     this.index = index;
   }
 
   mouseEnter(): void {
-    console.log('enter');
     clearInterval(this.interval);
   }
 

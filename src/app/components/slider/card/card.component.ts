@@ -128,7 +128,7 @@ export class CardComponent implements OnInit, AfterViewInit {
     const canPlay$ = fromEvent(this.videoplayer.nativeElement, 'canplay').pipe(
       tap((val) => {
         if (this.isLocalCardActive) {
-          //console.log(this.videoplayer.nativeElement.buffered.end(0));
+          console.log(this.videoplayer.nativeElement.buffered.end(0));
           this.videoplayer.nativeElement.play();
         }
       }),
@@ -163,7 +163,7 @@ export class CardComponent implements OnInit, AfterViewInit {
         next: () => {
           const currTime = this.videoplayer.nativeElement.currentTime;
           if (
-            currTime >= 0.4 * this.segmentEndTime &&
+            currTime >= 0.5 * this.segmentEndTime &&
             !this.isAddSegment &&
             Math.ceil(this.segmentEndTime) < this.videoEndTime
           ) {

@@ -10,14 +10,14 @@
   background-color: rgba(4, 0, 27, 0.75);
   color: white;
   animation: popup 400ms forwards ease;
- 
+  cursor: pointer; 
 }
 
 .card-focus-content {
-  cursor: pointer;
+  cursor: auto;
   overflow: hidden;
   position: relative;
-  width: 65%;
+  width: 70%;
   height: fit-content;
   margin: auto;
   border-radius: 10px;
@@ -36,6 +36,7 @@
 }
 
 .card-focus-title {
+  cursor:default;
   position: absolute;
   overflow: hidden;
   width: fit-content;
@@ -43,12 +44,10 @@
   left: 0;
   right: 0;
   margin: 2vw 3vw;
-}
-
-.title{
   transform: translateY(110%);
   animation: titleAnimation 1s forwards ease;
 }
+
 
 .card-focus-bottom-overlay {
   position: absolute;
@@ -75,12 +74,12 @@
 }
 
 .card-focus-button {
+  cursor: pointer;
   background: #e7e7e7;
   color: black;
   width: 40%;
 
   letter-spacing: 0.1em;
-  height: 50px;
   display: inline-block;
   margin-right: 15px;
   margin-left: 15px;
